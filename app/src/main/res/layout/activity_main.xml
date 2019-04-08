@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:orientation="vertical"
+        tools:context=".ui.StartActivity">
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -13,5 +14,12 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_list_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 
 </LinearLayout>
