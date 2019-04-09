@@ -1,8 +1,9 @@
-package com.mobile.codingchallenge.ui
+package com.mobile.codingchallenge.ui.start
 
+import androidx.lifecycle.MutableLiveData
 import com.mobile.codingchallenge.BuildConfig
-import com.mobile.codingchallenge.data.ApiService
-import com.mobile.codingchallenge.data.model.ConfigResponse
+import com.mobile.codingchallenge.data.converter.ConfigConverter
+import com.mobile.codingchallenge.data.rest.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -14,7 +15,12 @@ class StartActivityViewModel : BaseViewModel() {
     @Inject
     lateinit var api: ApiService
 
+    @Inject
+    lateinit var configConverter: ConfigConverter
+
     private lateinit var subscription: Disposable
+
+    val navigationListener = MutableLiveData<Boolean>()
 
 
     init {
@@ -25,29 +31,25 @@ class StartActivityViewModel : BaseViewModel() {
     private fun loadConfiguration() {
 
         // Call Config api here
-        subscription = api.getConfig(BuildConfig.API_KEY).subscribeOn(Schedulers.io())
+        subscription = api.getConfig(BuildConfig.API_KEY)
+            .map { configConverter.convert(it) }
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
-
                 // show progress bar
                 progressBarState.value = true
             }
-            .subscribe({ result ->
-                onRetrieveConfigSuccess(result)
-            }, { error -> onRetrieveConfigError(error) })
+            .subscribe({ onRetrieveConfigSuccess() },
+                { error -> onRetrieveConfigError(error) }
+            )
     }
 
 
-    private fun onRetrieveConfigSuccess(result: ConfigResponse) {
-
+    private fun onRetrieveConfigSuccess() {
         progressBarState.value = false
+        navigationListener.value = true
     }
 
-    private fun onRetrieveConfigError(error: Throwable) {
-
-        progressBarState.value = false
-
-    }
 
     override fun onCleared() {
         super.onCleared()

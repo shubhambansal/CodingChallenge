@@ -1,7 +1,7 @@
 package com.mobile.codingchallenge.di
 
 import com.mobile.codingchallenge.MyApplication
-import com.mobile.codingchallenge.ui.StartActivityViewModel
+import com.mobile.codingchallenge.ui.start.StartActivityViewModel
 import dagger.Component
 import javax.inject.Singleton
 

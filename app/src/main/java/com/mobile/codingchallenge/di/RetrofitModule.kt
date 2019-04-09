@@ -1,7 +1,7 @@
 package com.mobile.codingchallenge.di
 
 import com.mobile.codingchallenge.BuildConfig
-import com.mobile.codingchallenge.data.ApiService
+import com.mobile.codingchallenge.data.rest.ApiService
 import dagger.Module
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.Retrofit
@@ -10,7 +10,6 @@ import dagger.Provides
 import dagger.Reusable
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Singleton
 
 
 @Module
@@ -49,7 +48,7 @@ object RetrofitModule {
 
     @Provides
     @Reusable
-    fun provideApiService(retrofit: Retrofit) : ApiService{
+    fun provideApiService(retrofit: Retrofit) : ApiService {
         return retrofit.create(ApiService::class.java)
     }
 }
