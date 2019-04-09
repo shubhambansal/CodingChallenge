@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mobile.codingchallenge.BuildConfig
 import com.mobile.codingchallenge.data.converter.ConfigConverter
 import com.mobile.codingchallenge.data.rest.ApiService
+import com.mobile.codingchallenge.ui.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -40,7 +41,7 @@ class StartActivityViewModel : BaseViewModel() {
                 progressBarState.value = true
             }
             .subscribe({ onRetrieveConfigSuccess() },
-                { error -> onRetrieveConfigError(error) }
+                { error -> handleError(error) }
             )
     }
 

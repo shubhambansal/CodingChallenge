@@ -1,6 +1,7 @@
 package com.mobile.codingchallenge.di
 
 import com.mobile.codingchallenge.MyApplication
+import com.mobile.codingchallenge.ui.movies.MoviePageViewModel
 import com.mobile.codingchallenge.ui.start.StartActivityViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -12,6 +13,8 @@ interface ApplicationComponent {
     fun inject(app: MyApplication)
 
     fun inject(startActivityViewModel: StartActivityViewModel)
+
+    fun inject(moviePageViewModel: MoviePageViewModel)
 
     @Component.Builder
     interface Builder{

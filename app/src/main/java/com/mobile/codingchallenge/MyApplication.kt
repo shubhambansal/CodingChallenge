@@ -10,10 +10,6 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        DaggerApplicationComponent.builder()
-            .networkModule(RetrofitModule)
-            .applicationModule(ApplicationModule(this))
-            .build()
     }
 
 }
