@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.mobile.codingchallenge.R
 import com.mobile.codingchallenge.ui.BaseActivity
 import com.mobile.codingchallenge.ui.movies.MovieUiModel
-import com.mobile.codingchallenge.ui.movies.MoviesActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.movie_details_activity_layout.*
 
@@ -39,6 +38,7 @@ class MovieDetailActivity : BaseActivity() {
     private fun initView() {
 
         overview_text_view.text = model.overview
+        rating_text_view.text = model.rating
         model.imageUrl?.let {
             Glide.with(this).load(model.imageUrl).into(poster_image_view)
         }
