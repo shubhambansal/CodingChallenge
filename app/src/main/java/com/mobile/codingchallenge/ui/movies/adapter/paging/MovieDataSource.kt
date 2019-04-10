@@ -8,6 +8,7 @@ import com.mobile.codingchallenge.data.converter.MovieResponseConverter
 import com.mobile.codingchallenge.data.rest.ApiService
 import com.mobile.codingchallenge.data.rest.QueryConstant
 import com.mobile.codingchallenge.ui.movies.MovieUiModel
+import com.mobile.codingchallenge.ui.util.DateUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -17,7 +18,8 @@ import javax.inject.Singleton
 @Singleton
 class MovieDataSource @Inject constructor(
     private val apiService: ApiService,
-    private val movieResponseConverter: MovieResponseConverter
+    private val movieResponseConverter: MovieResponseConverter,
+    private val dateUtil: DateUtil
 ) : ItemKeyedDataSource<Integer, MovieUiModel>() {
 
 
@@ -34,7 +36,7 @@ class MovieDataSource @Inject constructor(
 
         val disposable = apiService.getMovies(getDefaultQueryMap(), pageNumber)
             .map { movieResponseConverter.convert(it) }
-            .doOnSubscribe { loadingStateLiveDatta.postValue(true)}
+            .doOnSubscribe { loadingStateLiveDatta.postValue(true) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ resultList -> onShowResult(resultList, callback) }, this::onError)
@@ -49,7 +51,7 @@ class MovieDataSource @Inject constructor(
 
         val disposable = apiService.getMovies(getDefaultQueryMap(), pageNumber)
             .map { movieResponseConverter.convert(it) }
-            .doOnSubscribe { loadingStateLiveDatta.postValue(true)}
+            .doOnSubscribe { loadingStateLiveDatta.postValue(true) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ resultList -> onMoviesFetched(resultList, callback) }, this::onError)
@@ -106,6 +108,7 @@ class MovieDataSource @Inject constructor(
         queryMap[QueryConstant.SORT_BY.key] = BuildConfig.DEFAULT_SORT
         queryMap[QueryConstant.INCLUDE_ADULT.key] = "false"
         queryMap[QueryConstant.INCLUDE_VIDEO.key] = "false"
+        queryMap[QueryConstant.RELEASE_DATE.key] = dateUtil.todayDate()
 
         return queryMap
     }

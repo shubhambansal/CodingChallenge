@@ -7,5 +7,5 @@ enum class QueryConstant(val key : String) {
     SORT_BY("sort_by"),
     INCLUDE_ADULT("include_adult"),
     INCLUDE_VIDEO("include_video"),
-
+    RELEASE_DATE("release_date.lte")
 }

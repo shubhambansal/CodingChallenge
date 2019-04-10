@@ -27,6 +27,11 @@
         <activity android:name=".ui.movies.MoviesActivity"
                   android:label="@string/title_latest_movies"
                   android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.detail.MovieDetailActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+
     </application>
 
 </manifest>

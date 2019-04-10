@@ -14,7 +14,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class MovieResponseConverter @Inject constructor(private val appRunTimeConfig: AppRunTimeConfig) :
+class MovieResponseConverter @Inject constructor(private val appRunTimeConfig: AppRunTimeConfig, private val dateUtil: DateUtil) :
     Converter<MovieResponse, List<MovieUiModel>> {
 
     override fun convert(input: MovieResponse): List<MovieUiModel> {
@@ -50,7 +50,7 @@ class MovieResponseConverter @Inject constructor(private val appRunTimeConfig: A
     }
 
     private fun getDateString(date: String): String {
-        var date = DateUtil.fromDateFormat.parse(date)
-        return DateUtil.toDateFormat.format(date)
+        var date = dateUtil.fromDateFormat.parse(date)
+        return dateUtil.toDateFormat.format(date)
     }
 }
