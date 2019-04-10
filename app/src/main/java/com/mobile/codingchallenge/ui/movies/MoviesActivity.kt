@@ -22,6 +22,7 @@ import javax.inject.Inject
  * The user can scroll the list and the new movies will be automatically loaded
  */
 class MoviesActivity : BaseActivity() {
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -35,6 +36,9 @@ class MoviesActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+
+        setSupportActionBar(toolbar)
+
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MoviePageViewModel::class.java)
 
         initView()

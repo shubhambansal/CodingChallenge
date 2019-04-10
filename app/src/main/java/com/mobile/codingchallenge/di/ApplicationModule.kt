@@ -1,9 +1,11 @@
 package com.mobile.codingchallenge.di
 
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mobile.codingchallenge.BuildConfig
+import com.mobile.codingchallenge.MyApplication
 import com.mobile.codingchallenge.config.AppRunTimeConfig
 import com.mobile.codingchallenge.data.rest.ApiService
 import dagger.Module
@@ -18,6 +20,12 @@ import javax.inject.Singleton
 
 @Module
 class ApplicationModule : AndroidModule() {
+
+    @Provides
+    @Singleton
+    fun provideContext(cashBookApplication: MyApplication): Context {
+        return cashBookApplication.applicationContext
+    }
 
     @Provides
     @Singleton

@@ -1,10 +1,15 @@
 package com.mobile.codingchallenge.di
 
 import android.content.Context
+import android.net.Uri
+import android.util.Log
 import com.mobile.codingchallenge.data.AndroidResourceManager
 import dagger.Module
 import dagger.Provides
 import glotto.mobile.cashbook.data.android.AndroidResourceManagerImpl
+import okhttp3.OkHttpClient
+import java.lang.Exception
+import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 /**

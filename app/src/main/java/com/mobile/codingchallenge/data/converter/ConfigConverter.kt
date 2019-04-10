@@ -28,7 +28,7 @@ class ConfigConverter @Inject constructor(private val appRunTimeConfig: AppRunTi
         }
 
         if (fallbackSize.isNullOrEmpty().not()) {
-            appRunTimeConfig.baseFallbackUrl = " ${input.images.secureBaseUrl}$fallbackSize"
+            appRunTimeConfig.baseFallbackUrl = "${input.images.baseUrl}$fallbackSize"
         }
 
 
@@ -38,7 +38,7 @@ class ConfigConverter @Inject constructor(private val appRunTimeConfig: AppRunTi
             posterSize = input.images.posterSizes.find { it == SIZE_ORIGINAL }
         }
         if (posterSize.isNullOrEmpty().not()) {
-            appRunTimeConfig.basePosterUrl = " ${input.images.secureBaseUrl}$posterSize"
+            appRunTimeConfig.basePosterUrl = "${input.images.baseUrl}$posterSize"
         }
 
         if (isRuntimeConfigValid()) {
