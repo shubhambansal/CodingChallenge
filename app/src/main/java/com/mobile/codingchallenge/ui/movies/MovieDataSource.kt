@@ -22,7 +22,9 @@ class MovieDataSource @Inject constructor(
 
     private val compositeDisposable = CompositeDisposable()
     private var pageNumber: Int = 1
-    val loadingState = MutableLiveData<Boolean>()
+
+    val loadingStateLiveDatta = MutableLiveData<Boolean>()
+    val paginationErrorLiveData = MutableLiveData<String>()
 
 
     override fun loadInitial(params: LoadInitialParams<Integer>, callback: LoadInitialCallback<MovieUiModel>) {
@@ -31,7 +33,7 @@ class MovieDataSource @Inject constructor(
 
         val disposable = apiService.getMovies(getDefaultQueryMap(), pageNumber)
             .map { movieResponseConverter.convert(it) }
-            .doOnSubscribe { loadingState.postValue(true)}
+            .doOnSubscribe { loadingStateLiveDatta.postValue(true)}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ resultList -> onShowResult(resultList, callback) }, this::onError)
@@ -46,7 +48,7 @@ class MovieDataSource @Inject constructor(
 
         val disposable = apiService.getMovies(getDefaultQueryMap(), pageNumber)
             .map { movieResponseConverter.convert(it) }
-            .doOnSubscribe { loadingState.postValue(true)}
+            .doOnSubscribe { loadingStateLiveDatta.postValue(true)}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ resultList -> onMoviesFetched(resultList, callback) }, this::onError)
@@ -67,7 +69,7 @@ class MovieDataSource @Inject constructor(
         resultList: List<MovieUiModel>,
         callback: LoadInitialCallback<MovieUiModel>
     ) {
-        loadingState.postValue(false)
+        loadingStateLiveDatta.postValue(false)
         pageNumber++
         callback.onResult(resultList)
 
@@ -82,7 +84,9 @@ class MovieDataSource @Inject constructor(
     }
 
     private fun onError(throwable: Throwable) {
-        loadingState.postValue(false)
+
+        loadingStateLiveDatta.postValue(false)
+        paginationErrorLiveData.postValue(throwable.message)
     }
 
     fun clear() {

@@ -2,24 +2,34 @@ package com.mobile.codingchallenge.ui.start
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.mobile.codingchallenge.R
+import com.mobile.codingchallenge.ui.BaseActivity
 import com.mobile.codingchallenge.ui.movies.MoviesActivity
+import dagger.android.AndroidInjection
 
 import kotlinx.android.synthetic.main.start_activity_layout.*
+import javax.inject.Inject
 
-class StartActivity : AppCompatActivity() {
+class StartActivity : BaseActivity() {
 
-    private lateinit var viewModel: StartActivityViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    override fun layoutRes(): Int {
+        return R.layout.start_activity_layout
+    }
+
+    private lateinit var viewModel: StartPageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.start_activity_layout)
 
-        viewModel = ViewModelProviders.of(this).get(StartActivityViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(StartPageViewModel::class.java)
         initObservers()
     }
 

@@ -18,7 +18,15 @@ class MovieResponseConverter @Inject constructor(private val appRunTimeConfig: A
         val movieList = arrayListOf<MovieUiModel>()
 
         input.results.forEach { item ->
-            val movieUiModel = MovieUiModel(item.id, item.title, item.overview)
+
+            var posterUrl: String
+            if (!appRunTimeConfig.basePosterUrl.isNullOrEmpty()) {
+                posterUrl = "${appRunTimeConfig.basePosterUrl}${item.posterPath}"
+            } else {
+                posterUrl = "${appRunTimeConfig.baseFallbackUrl}${item.fallbackPosterPath}"
+            }
+
+            val movieUiModel = MovieUiModel(item.id, item.title, item.overview, posterUrl)
             movieList.add(movieUiModel)
         }
 
