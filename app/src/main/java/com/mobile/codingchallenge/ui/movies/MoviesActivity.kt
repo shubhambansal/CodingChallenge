@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.mobile.codingchallenge.R
 import com.mobile.codingchallenge.ui.BaseActivity
+import com.mobile.codingchallenge.ui.detail.MovieDetailActivity
 import com.mobile.codingchallenge.ui.movies.adapter.paging.MovieDiffUtilItemCallback
 import com.mobile.codingchallenge.ui.movies.adapter.MoviesPagedAdapter
+import com.mobile.codingchallenge.ui.util.RecyclerItemClickListener
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.movie_activity_layout.*
 import javax.inject.Inject
@@ -50,6 +52,20 @@ class MoviesActivity : BaseActivity() {
         movie_list_recycler_view.layoutManager = LinearLayoutManager(this)
         adapter = MoviesPagedAdapter(MovieDiffUtilItemCallback())
         movie_list_recycler_view.adapter = adapter
+
+        movie_list_recycler_view.addOnItemTouchListener(
+            RecyclerItemClickListener(
+                this,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+
+                        val item = adapter.currentList?.get(position)
+                        item?.let {
+                            startActivity(MovieDetailActivity.createIntent(this@MoviesActivity, it))
+                        }
+                    }
+                })
+        )
     }
 
     private fun initObservers() {

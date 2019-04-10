@@ -1,5 +1,6 @@
 package com.mobile.codingchallenge.di
 
+import com.mobile.codingchallenge.ui.detail.MovieDetailActivity
 import com.mobile.codingchallenge.ui.movies.di.MovieModule
 import com.mobile.codingchallenge.ui.movies.MoviesActivity
 import com.mobile.codingchallenge.ui.start.StartActivity
@@ -17,4 +18,6 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector(modules = [MovieModule::class])
     abstract fun bindMovieActivity(): MoviesActivity
 
+    @ContributesAndroidInjector(modules = [MovieModule::class])
+    abstract fun bindMovieDetailActivity(): MovieDetailActivity
 }

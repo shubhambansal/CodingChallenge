@@ -6,5 +6,6 @@
 
     <string name="text_welcome">Welcome to Coding Challenge</string>
     <string name="error_config">Unable to load app configuration. Please try again.</string>
+    <string name="info_overview">Movie Overview</string>
 
 </resources>
