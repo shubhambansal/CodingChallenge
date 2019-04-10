@@ -16,7 +16,7 @@ android {
         buildConfigField 'String', "BASE_URL", "\"https://api.themoviedb.org/\""
         buildConfigField 'String', "API_KEY", "\"ba7193c4e716ff3344f6f722277441ef\""
         buildConfigField 'String', "DEFAULT_LABGUAGE", "\"en-US\""
-        buildConfigField 'String', "DEFAULT_SORT", "\"popularity.desc\""
+        buildConfigField 'String', "DEFAULT_SORT", "\"release_date.desc\""
     }
 
     buildTypes {

@@ -1,3 +1,10 @@
 package com.mobile.codingchallenge.ui.movies
 
-data class MovieUiModel(val id: Int, val title: String, val overview: String, val imageUrl: String)
+data class MovieUiModel(
+    val id: Int,
+    val title: String,
+    val overview: String,
+    val imageUrl: String,
+    val rating: String,
+    val releaseDate: String
+)
