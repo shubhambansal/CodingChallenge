@@ -1,26 +1,31 @@
 package com.mobile.codingchallenge.di
 
+import android.app.Application
 import com.mobile.codingchallenge.MyApplication
-import com.mobile.codingchallenge.ui.StartActivityViewModel
 import dagger.Component
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 import javax.inject.Singleton
+import dagger.BindsInstance
+import dagger.android.support.AndroidSupportInjectionModule
+
 
 @Singleton
-@Component(modules = [ApplicationModule::class, RetrofitModule::class])
+@Component(
+    modules = [AndroidSupportInjectionModule::class,
+        ApplicationModule::class,
+        ActivityBindingModule::class]
+)
 interface ApplicationComponent {
 
     fun inject(app: MyApplication)
 
-    fun inject(startActivityViewModel: StartActivityViewModel)
-
     @Component.Builder
-    interface Builder{
+    interface Builder {
 
-        fun build() : ApplicationComponent
+        @BindsInstance
+        fun application(application: MyApplication): Builder
 
-        fun networkModule(retrofitModule: RetrofitModule) : Builder
-
-        fun applicationModule(applicationModule: ApplicationModule) : Builder
+        fun build(): ApplicationComponent
     }
-
 }
