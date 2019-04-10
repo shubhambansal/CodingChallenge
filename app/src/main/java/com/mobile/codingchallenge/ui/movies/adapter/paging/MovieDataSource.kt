@@ -80,6 +80,7 @@ class MovieDataSource @Inject constructor(
         resultList: List<MovieUiModel>,
         callback: LoadCallback<MovieUiModel>
     ) {
+        loadingStateLiveDatta.postValue(false)
         pageNumber++;
         callback.onResult(resultList)
     }

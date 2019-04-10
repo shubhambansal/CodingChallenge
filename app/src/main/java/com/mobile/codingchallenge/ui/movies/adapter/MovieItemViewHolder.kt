@@ -15,6 +15,6 @@ class MovieItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view
 
     fun bind(item: MovieUiModel?) {
         movieTitle.text = item?.title
-        Glide.with(view.context).load(item?.imageUrl).into(posterImageView)
+        Glide.with(view.context).load(item?.imageUrl).fitCenter().into(posterImageView)
     }
 }
