@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.mobile.codingchallenge.ui.movies.adapter.paging.MoviesDataSourceFactory
 import javax.inject.Provider
 
 class MoviePageViewModel(val moviesDataSourceFactory: MoviesDataSourceFactory) :

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.mobile.codingchallenge.R
 import com.mobile.codingchallenge.ui.BaseActivity
-import com.mobile.codingchallenge.ui.movies.adapter.MovieDiffUtilItemCallback
+import com.mobile.codingchallenge.ui.movies.adapter.paging.MovieDiffUtilItemCallback
 import com.mobile.codingchallenge.ui.movies.adapter.MoviesPagedAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.movie_activity_layout.*

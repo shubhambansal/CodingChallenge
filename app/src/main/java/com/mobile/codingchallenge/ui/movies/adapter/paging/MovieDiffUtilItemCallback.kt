@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.ui.movies.adapter
+package com.mobile.codingchallenge.ui.movies.adapter.paging
 
 import androidx.recyclerview.widget.DiffUtil
 import com.mobile.codingchallenge.ui.movies.MovieUiModel

@@ -1,10 +1,9 @@
-package com.mobile.codingchallenge.ui.movies
+package com.mobile.codingchallenge.ui.movies.di
 
 import androidx.lifecycle.ViewModel
-import com.mobile.codingchallenge.data.converter.ConfigConverter
-import com.mobile.codingchallenge.data.rest.ApiService
 import com.mobile.codingchallenge.di.ViewModelKey
-import com.mobile.codingchallenge.ui.start.StartPageViewModel
+import com.mobile.codingchallenge.ui.movies.MoviePageViewModel
+import com.mobile.codingchallenge.ui.movies.adapter.paging.MoviesDataSourceFactory
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap

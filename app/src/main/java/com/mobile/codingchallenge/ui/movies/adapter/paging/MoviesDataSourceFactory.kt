@@ -1,7 +1,8 @@
-package com.mobile.codingchallenge.ui.movies
+package com.mobile.codingchallenge.ui.movies.adapter.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
+import com.mobile.codingchallenge.ui.movies.MovieUiModel
 import javax.inject.Inject
 import javax.inject.Singleton
 

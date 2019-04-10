@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.ui.movies
+package com.mobile.codingchallenge.ui.movies.adapter.paging
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +7,7 @@ import com.mobile.codingchallenge.BuildConfig
 import com.mobile.codingchallenge.data.converter.MovieResponseConverter
 import com.mobile.codingchallenge.data.rest.ApiService
 import com.mobile.codingchallenge.data.rest.QueryConstant
+import com.mobile.codingchallenge.ui.movies.MovieUiModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

@@ -1,9 +1,9 @@
 package com.mobile.codingchallenge.di
 
-import com.mobile.codingchallenge.ui.movies.MovieModule
+import com.mobile.codingchallenge.ui.movies.di.MovieModule
 import com.mobile.codingchallenge.ui.movies.MoviesActivity
 import com.mobile.codingchallenge.ui.start.StartActivity
-import com.mobile.codingchallenge.ui.start.StartModule
+import com.mobile.codingchallenge.ui.start.di.StartModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
