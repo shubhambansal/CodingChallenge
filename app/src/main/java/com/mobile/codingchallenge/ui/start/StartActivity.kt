@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.mobile.codingchallenge.R
 import com.mobile.codingchallenge.ui.BaseActivity
-import com.mobile.codingchallenge.ui.movies.MoviesActivity
 import dagger.android.AndroidInjection
 
 import kotlinx.android.synthetic.main.start_activity_layout.*
@@ -49,11 +48,6 @@ class StartActivity : BaseActivity() {
         //If config loaded than we'll go to display list of movies
         viewModel.navigationListener.observe(this, Observer {
 
-            if (it)
-                startActivity(MoviesActivity.createIntent(this))
-            else {
-                showStickySnackBarError(getString(R.string.error_config))
-            }
         })
 
     }

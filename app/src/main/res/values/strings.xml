@@ -1,11 +1,4 @@
 <resources>
     <string name="app_name">CodingChallenge</string>
     <string name="action_settings">Settings</string>
-
-    <string name="title_latest_movies">Latest Movies</string>
-
-    <string name="text_welcome">Welcome to Coding Challenge</string>
-    <string name="error_config">Unable to load app configuration. Please try again.</string>
-    <string name="info_overview">Movie Overview</string>
-
 </resources>

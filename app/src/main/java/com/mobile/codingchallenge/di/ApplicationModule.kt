@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mobile.codingchallenge.BuildConfig
 import com.mobile.codingchallenge.MyApplication
-import com.mobile.codingchallenge.config.AppRunTimeConfig
 import com.mobile.codingchallenge.data.rest.ApiService
 import dagger.Module
 import dagger.Provides
@@ -73,11 +72,5 @@ class ApplicationModule : AndroidModule() {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideAppRunTimeConfig(): AppRunTimeConfig {
-        return AppRunTimeConfig()
     }
 }
