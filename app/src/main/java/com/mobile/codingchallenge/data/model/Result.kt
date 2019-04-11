@@ -9,6 +9,6 @@ data class Result(
     val title: String,
     val overview: String,
     val release_date: String,
-    @field:Json(name = "poster_path") val posterPath: String,
-    @field:Json(name = "backdrop_path") val fallbackPosterPath: String
+    @field:Json(name = "poster_path") val posterPath: String?,
+    @field:Json(name = "backdrop_path") val fallbackPosterPath: String?
 )

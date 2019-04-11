@@ -19,6 +19,15 @@ android {
         buildConfigField 'String', "DEFAULT_SORT", "\"release_date.desc\""
     }
 
+    kotlinOptions {
+        freeCompilerArgs = ['-Xprogressive']
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,9 +35,34 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+    testOptions {
+        unitTests {
+            all {
+                //Needed for tests that involve classes from Google Play Services. Otherwise Mockito throws an exception
+                jvmArgs '-noverify'
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+}
+
+// Added this to generate dagger component classes while running unit test cases
+android.applicationVariants.all { variant ->
+    if (variant.buildType.name == "debug") {
+        def aptOutputDir = new File(buildDir, "generated/source/apt/${variant.unitTestVariant.dirName}")
+        variant.unitTestVariant.addJavaSourceFoldersToModel(aptOutputDir)
+        assembleDebug.finalizedBy('assembleDebugUnitTest')
     }
 }
 
@@ -64,6 +98,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion" // for unit testing
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -83,6 +118,7 @@ dependencies {
 
     /* Testing Dependencies */
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.8.9'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
