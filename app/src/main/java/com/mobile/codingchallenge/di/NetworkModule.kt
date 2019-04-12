@@ -2,10 +2,9 @@ package com.mobile.codingchallenge.di
 
 
 import android.content.Context
-import android.util.Log
 import com.mobile.codingchallenge.BuildConfig
 import com.mobile.codingchallenge.data.network.ApiService
-import com.mobile.codingchallenge.data.network.SslUtils.getSslContextForCertificateFile
+import com.mobile.codingchallenge.data.network.config.SslUtils.getSslContextForCertificateFile
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

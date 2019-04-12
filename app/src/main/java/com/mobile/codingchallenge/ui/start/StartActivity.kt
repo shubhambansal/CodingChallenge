@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.mobile.codingchallenge.R
-import com.mobile.codingchallenge.ui.BaseActivity
+import com.mobile.codingchallenge.ui.base.BaseActivity
 import dagger.android.AndroidInjection
 
 import kotlinx.android.synthetic.main.start_activity_layout.*

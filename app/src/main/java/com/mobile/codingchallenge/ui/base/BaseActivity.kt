@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.ui
+package com.mobile.codingchallenge.ui.base
 
 import dagger.android.support.DaggerAppCompatActivity
 import android.os.Bundle

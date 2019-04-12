@@ -1,10 +1,10 @@
 package com.mobile.codingchallenge.di
 
 import android.content.Context
-import com.mobile.codingchallenge.data.AndroidResourceManager
+import com.mobile.codingchallenge.data.android.AndroidResourceManager
+import com.mobile.codingchallenge.data.android.AndroidResourceManagerImpl
 import dagger.Module
 import dagger.Provides
-import glotto.mobile.cashbook.data.android.AndroidResourceManagerImpl
 import javax.inject.Singleton
 
 /**

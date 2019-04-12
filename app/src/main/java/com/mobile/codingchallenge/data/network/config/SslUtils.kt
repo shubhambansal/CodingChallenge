@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.data.network
+package com.mobile.codingchallenge.data.network.config
 
 import android.content.Context
 import android.util.Log
@@ -20,7 +20,7 @@ object SslUtils {
 
     fun getSslContextForCertificateFile(context: Context, fileName: String): SSLContext {
         try {
-            val keyStore = SslUtils.getKeyStore(context, fileName)
+            val keyStore = getKeyStore(context, fileName)
             val sslContext = SSLContext.getInstance("SSL")
             val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
             trustManagerFactory.init(keyStore)

@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.data
+package com.mobile.codingchallenge.data.android
 
 import androidx.annotation.StringRes
 

@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.ui.util
+package com.mobile.codingchallenge.ui.base
 
 import android.content.Context
 import android.view.GestureDetector
