@@ -26,33 +26,6 @@ class ApplicationModule : AndroidModule() {
         return cashBookApplication.applicationContext
     }
 
-    @Provides
-    @Singleton
-    fun getRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .client(okHttpClient)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-    }
-
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun getHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        return httpLoggingInterceptor
-    }
 
     /* Singleton factory that searches generated map for specific provider and
         uses it to get a ViewModel instance */
@@ -65,12 +38,5 @@ class ApplicationModule : AndroidModule() {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return requireNotNull(providers[modelClass as Class<out ViewModel>]).get() as T
         }
-    }
-
-
-    @Provides
-    @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
     }
 }
