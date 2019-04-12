@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mobile.codingchallenge.BuildConfig
 import com.mobile.codingchallenge.data.converter.VehicleResponseConverter
-import com.mobile.codingchallenge.data.rest.ApiService
+import com.mobile.codingchallenge.data.network.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

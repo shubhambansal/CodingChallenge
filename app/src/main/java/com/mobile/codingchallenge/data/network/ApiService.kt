@@ -1,4 +1,4 @@
-package com.mobile.codingchallenge.data.rest
+package com.mobile.codingchallenge.data.network
 
 import com.mobile.codingchallenge.data.model.VehicleResponse
 import io.reactivex.Single

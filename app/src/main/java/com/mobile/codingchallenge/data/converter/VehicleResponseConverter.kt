@@ -19,8 +19,8 @@ class VehicleResponseConverter @Inject constructor() : Converter<VehicleResponse
 
         input.imageList.forEach { item ->
 
-            thumbNailList.add("$item$SUFFIX_THUMBNAIL")
-            posterImageList.add("$item$SUFFIX_POSTER_IMAGE")
+            thumbNailList.add("${item.uri}$SUFFIX_THUMBNAIL")
+            posterImageList.add("${item.uri}$SUFFIX_POSTER_IMAGE")
 
         }
 
