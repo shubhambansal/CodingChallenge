@@ -12,6 +12,10 @@ import dagger.android.AndroidInjection
 
 import kotlinx.android.synthetic.main.start_activity_layout.*
 import javax.inject.Inject
+import androidx.recyclerview.widget.GridLayoutManager
+import com.mobile.codingchallenge.ui.base.GridItemDecoration
+import com.mobile.codingchallenge.ui.start.adapter.ImageAdapter
+
 
 class StartActivity : BaseActivity() {
 
@@ -23,13 +27,25 @@ class StartActivity : BaseActivity() {
     }
 
     private lateinit var viewModel: StartPageViewModel
+    private lateinit var adapter: ImageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
+        setSupportActionBar(toolbar)
+        initView()
+
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(StartPageViewModel::class.java)
         initObservers()
+    }
+
+
+    private fun initView() {
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        recyclerView.addItemDecoration(GridItemDecoration(10, 2))
+        adapter = ImageAdapter(mutableListOf())
+        recyclerView.adapter = adapter
     }
 
 
@@ -48,6 +64,10 @@ class StartActivity : BaseActivity() {
         //If config loaded than we'll go to display list of movies
         viewModel.navigationListener.observe(this, Observer {
 
+        })
+
+        viewModel.resultLiveData.observe(this, Observer {
+            adapter.setItem(it)
         })
 
     }

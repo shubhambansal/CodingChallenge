@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * This module only provides android specific dependencies such as shared preference.
  */
 @Module
-open class AndroidModule {
+class AndroidModule {
 
     @Provides
     @Singleton

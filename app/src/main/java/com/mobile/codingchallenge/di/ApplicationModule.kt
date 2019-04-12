@@ -11,7 +11,7 @@ import javax.inject.Provider
 import javax.inject.Singleton
 
 @Module
-class ApplicationModule : AndroidModule() {
+class ApplicationModule {
 
     @Provides
     @Singleton

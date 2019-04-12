@@ -15,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-class NetworkModule : AndroidModule() {
+class NetworkModule {
 
 
     @Provides

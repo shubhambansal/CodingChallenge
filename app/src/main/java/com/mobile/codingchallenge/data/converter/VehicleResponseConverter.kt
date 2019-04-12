@@ -10,6 +10,7 @@ class VehicleResponseConverter @Inject constructor() : Converter<VehicleResponse
 
     private val SUFFIX_THUMBNAIL = "_2.jpg"
     private val SUFFIX_POSTER_IMAGE = "_27.jpg"
+    private val SCHEME = "http://"
 
     override fun convert(input: VehicleResponse): VehicleUiModel {
 
@@ -19,8 +20,8 @@ class VehicleResponseConverter @Inject constructor() : Converter<VehicleResponse
 
         input.imageList.forEach { item ->
 
-            thumbNailList.add("${item.uri}$SUFFIX_THUMBNAIL")
-            posterImageList.add("${item.uri}$SUFFIX_POSTER_IMAGE")
+            thumbNailList.add("$SCHEME${item.uri}$SUFFIX_THUMBNAIL")
+            posterImageList.add("$SCHEME${item.uri}$SUFFIX_POSTER_IMAGE")
 
         }
 
