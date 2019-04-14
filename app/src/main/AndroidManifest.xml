@@ -26,6 +26,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+                android:name=".ui.start.FullScreenImageActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+
+
     </application>
 
 </manifest>

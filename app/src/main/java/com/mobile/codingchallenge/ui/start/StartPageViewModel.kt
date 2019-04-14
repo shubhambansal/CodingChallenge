@@ -30,7 +30,7 @@ class StartPageViewModel(
     //Navigation listener to open other activity
     val navigationListener = MutableLiveData<Boolean>()
 
-    val resultLiveData = MutableLiveData<List<String>>()
+    val resultLiveData = MutableLiveData<VehicleUiModel>()
 
     init {
         loadImages()
@@ -46,15 +46,16 @@ class StartPageViewModel(
             .doOnSubscribe {
                 // show progress bar
                 progressBarState.value = true
-            }
+            }.cache()
             .subscribe({ result -> onRetrieveConfigSuccess(result) },
                 { error -> handleError(error) }
             )
     }
 
     private fun onRetrieveConfigSuccess(result: VehicleUiModel) {
+
         progressBarState.value = false
-        resultLiveData.value = result.thumbnailList
+        resultLiveData.value = result
     }
 
     private fun handleError(error: Throwable) {

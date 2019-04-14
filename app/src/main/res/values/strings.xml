@@ -5,4 +5,5 @@
 
     <string name="error_no_internet">No Internet Connection!</string>
     <string name="error_unknown">Something wrong happened! Please try again.</string>
+    <string name="transition_full_screen">fullScreen</string>
 </resources>

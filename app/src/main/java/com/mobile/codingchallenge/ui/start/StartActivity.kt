@@ -2,6 +2,7 @@ package com.mobile.codingchallenge.ui.start
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -14,7 +15,9 @@ import kotlinx.android.synthetic.main.start_activity_layout.*
 import javax.inject.Inject
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mobile.codingchallenge.ui.base.GridItemDecoration
+import com.mobile.codingchallenge.ui.base.RecyclerItemClickListener
 import com.mobile.codingchallenge.ui.start.adapter.ImageAdapter
+import kotlinx.android.synthetic.main.image_grid_item_layout.view.*
 
 
 class StartActivity : BaseActivity() {
@@ -42,12 +45,40 @@ class StartActivity : BaseActivity() {
 
 
     private fun initView() {
+
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.addItemDecoration(GridItemDecoration(10, 2))
         adapter = ImageAdapter(mutableListOf())
         recyclerView.adapter = adapter
+
+        recyclerView.addOnItemTouchListener(
+            RecyclerItemClickListener(
+                this,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+
+                        goToDetails(position, view.thumbnail_image_view)
+
+                    }
+                })
+        )
     }
 
+    fun goToDetails(position: Int, imageView: View) {
+
+        val url = viewModel.resultLiveData.value?.fullScaleImage?.let {
+            it[position]
+        }
+
+        url?.let {
+
+            val options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, imageView.transitionName).toBundle()
+            startActivity(FullScreenImageActivity.createIntent(this, url), options)
+        }
+
+
+    }
 
     private fun initObservers() {
 
@@ -67,7 +98,7 @@ class StartActivity : BaseActivity() {
         })
 
         viewModel.resultLiveData.observe(this, Observer {
-            adapter.setItem(it)
+            adapter.setItem(it.thumbnailList)
         })
 
     }
