@@ -93,7 +93,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion" // for unit testing
+//    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion" // for unit testing
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -114,6 +114,6 @@ dependencies {
     /* Testing Dependencies */
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.8.9'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+//    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
