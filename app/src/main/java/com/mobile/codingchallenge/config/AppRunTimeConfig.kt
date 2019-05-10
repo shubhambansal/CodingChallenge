@@ -3,7 +3,7 @@ package com.mobile.codingchallenge.config
 import javax.inject.Inject
 import javax.inject.Singleton
 
-class AppRunTimeConfig constructor() {
+class AppRunTimeConfig {
 
     var basePosterUrl: String? = null
 
